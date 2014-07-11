@@ -1,0 +1,24 @@
+
+#logo{
+  position: relative;
+  height:100px;
+  display:block;
+  line-height: 150px;
+}
+
+#logo img {
+  position: absolute;
+  left:-70px;
+  top:-20px;
+  z-index: 10;
+}
+
+#logo span{ 
+  position: absolute;
+  font-size:43px;
+  font-weight:bold;
+  left:60px;
+  top:-10px;
+  width:200px;
+  z-index: 9;
+}

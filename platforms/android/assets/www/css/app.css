@@ -1,0 +1,41 @@
+body {
+  /*font-family: '微软雅黑';*/
+}
+
+.errors,
+#errors {
+  color:white;
+  margin-left:16px;
+  margin-right:16px;
+  border:1px solid #8A1F11;
+  margin-top:16px;
+}
+
+.errors ul,
+#errors ul {
+  margin:2px;
+  background-color:#8A1F11;
+  padding-top:10px;
+  padding-bottom:10px;
+  font-weight:small;
+}
+
+.hidden {
+  display:none;
+}
+
+.r {
+  text-align: right;
+  padding-left: 10px;
+}
+
+.ui-li-value {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  padding: .2em .5em;
+  top: 50%;
+  margin-top: -.9em;
+  right: 48px;
+  color:#777777;
+}

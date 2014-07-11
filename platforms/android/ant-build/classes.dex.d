@@ -1,0 +1,19 @@
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes.dex : \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/com/camy/battery/BuildConfig.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/com/camy/battery/HelloWorld.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/com/camy/battery/R$attr.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/com/camy/battery/R$drawable.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/com/camy/battery/R$string.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/com/camy/battery/R$xml.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/com/camy/battery/R.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial$1.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial$2.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial$3.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial$4.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial$5.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial$6.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial$7.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/Serial.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/classes/org/stereolux/cordova/serial/UsbBroadcastReceiver.class \
+/Users/amonlei/projects/camy/platforms/android/ant-build/dexedLibs/classes-3ba69feef716fca3ee1126756778acc6.jar \
+/Users/amonlei/projects/camy/platforms/android/ant-build/dexedLibs/usbseriallibrary-2644348f0587b10d9233e8025158cccb.jar \

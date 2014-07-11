@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/debug.css">
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="serial.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src='js/jquery.loadTemplate-1.4.4.min.js'></script>
+        <script type="text/javascript" src='js/jquery.xml2json.js'></script>
+        <script type="text/javascript" src='js/jquery.storageapi.min.js'></script>
+        <script type="text/javascript" src='js/app.js'></script>
+        <script type="text/javascript" src='js/md5.js'></script>
+        <script src="js/jquery.mobile-1.4.2.min.js"></script>   
+        <title>调试页面</title>
+    </head>
+    <body>
+        <div data-role="page" data-control-title="Home" id="index">
+            <div data-theme="a" data-role="header">
+                <h1 class="ui-title">
+                    串口调试
+                </h1>
+                <a href="debug.html" class="ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all ui-btn-right" rel='external'>返回</a>
+            </div>
+            <div id='setting' data-role="content">
+                <form id='debug_form' class='to_server' action="">
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="baudRate">
+                            baudRate
+                        </label>
+                        <input name="baudRate" id="baudRate" placeholder="默认38400" value="" type="number">
+                    </div>
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="dataBits">
+                            dataBits
+                        </label>
+                        <input name="dataBits" id="dataBits" placeholder="默认8" value="" type="number">
+                    </div>
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="stopBits">
+                            stopBits
+                        </label>
+                        <input name="stopBits" id="stopBits" placeholder="默认1" value="" type="number">
+                    </div>
+                    <div data-role="fieldcontain" data-controltype="textinput">
+                        <label for="parity">
+                            parity
+                        </label>
+                        <input name="parity" id="parity" placeholder="默认0" value="" type="number">
+                    </div>
+                </form>                
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a id='run' data-role="button" data-icon="carat-r"  data-iconpos="left" href="">
+                            尝试读取串口
+                        </a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a id='clear' data-role="button" data-icon="refresh"  data-iconpos="left" href="">
+                            清除日志
+                        </a>                            
+                    </div>
+                </div>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        调试信息
+                    </li>
+                    <li id='console'>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script  type="text/html" id="log_template">
+            <div class='log' data-content="cc"></div>
+        </script>
+        <script  type="text/html" id="error_template">
+            <div class='error' data-content="cc"></div>
+        </script>
+        <script type="text/javascript">
+            $(document).on("pageshow","#index",function(){
+                if($db.isEmpty('tmp.debug.inputs')) {
+                    $db.set('tmp.debug.inputs',{})
+                }
+                if($db.isSet('tmp.debug.inputs.baudRate')) {
+                    $('#baudRate').val($db.get('tmp.debug.inputs.baudRate'));
+                } else {
+                    $('#baudRate').val(38400);
+                }
+
+                if($db.isSet('tmp.debug.inputs.dataBits')) {
+                    $('#dataBits').val($db.get('tmp.debug.inputs.dataBits'));
+                } else {
+                    $('#dataBits').val(8);
+                }
+
+                if($db.isSet('tmp.debug.inputs.stopBits')) {
+                    $('#stopBits').val($db.get('tmp.debug.inputs.stopBits'));
+                } else {
+                    $('#stopBits').val(1);
+                }
+
+                if($db.isSet('tmp.debug.inputs.parity')) {
+                    $('#parity').val($db.get('tmp.debug.inputs.parity'));
+                } else {
+                    $('#parity').val(0);
+                }
+            })
+
+            $('#run').on('tap',function() {
+                $show_log('1. 准备读取串口')
+                $db.set('tmp.debug.inputs',{
+                    baudRate: $('#baudRate').val(),
+                    dataBits: $('#dataBits').val(),
+                    stopBits: $('#stopBits').val(),
+                    parity: $('#parity').val()
+                })
+                try {          
+                    $show_log('2. 注册串口 ')
+                    // serial.registerReadCallback(
+                    //     function success(data){
+                    //         var str = String.fromCharCode.apply(null, new Uint8Array(data));
+                    //         $show_log('3. 成功读取到数据:' + str)
+                    //     },
+                    //     function error(err){
+                    //         $show_error('读取串口失败：' + err)
+                    //     });
+                    serial.requestPermission(
+                    function(successMessage) {
+                            $show_log('2.1 获得权限，准备打开: ' +  successMessage)
+                            serial.open(
+                                {
+                                    baudRate: $('#baudRate').val(),
+                                    dataBits: $('#dataBits').val(),
+                                    stopBits: $('#stopBits').val(),
+                                    parity: $('#parity').val()
+                                },
+                                function(successMessage) {
+                                    $show_log('2.2 端口打开，注册读取: ' + successMessage)
+                                    // $show_log('开始关闭')
+                                    // serial.close(function() {
+                                    //     $show_log('成功关闭')
+                                    // })
+                                    // serial.read()
+                                    serial.registerReadCallback(
+                                        function(buffer) {
+                                            $show_log('2.3 成功读取')
+                                            var view = new Uint8Array(buffer);
+                                            $show_log('(' + view.length + ')');
+                                        },
+                                        $show_error
+                                    );
+                                },
+                                $show_error
+                            );
+                        },
+                        $show_error
+                    );
+                } catch(e) {
+                    $show_error('执行错误：' + e)
+                }                
+            })
+        
+            $serial_init(function() {$show_log('设备准备好，可以读写.')});
+
+            $show_error = function(err) {
+                $('#console').loadTemplate($('#error_template'),{cc :err},{append:true})
+            }
+
+            $show_log = function(log) {
+                $('#console').loadTemplate($('#log_template'),{cc :log},{append:true})
+            }
+
+            $('#clear').on('tap',function() {
+                $('#console').html('');        
+            })            
+        </script>
+    </body>
+</html>

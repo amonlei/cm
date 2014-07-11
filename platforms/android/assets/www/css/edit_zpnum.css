@@ -1,0 +1,23 @@
+.char_button {
+  float:left;
+}
+
+#num_buttons,
+#word_buttons {
+  padding-right:0px;
+}
+
+#zpnum_in_zpnum_input {
+  border:0px;
+  background-color:transparent;
+  padding-left:0px;
+  min-height:20px;
+}
+
+#zpnum_input_grid .ui-block-a {
+  width:auto;
+}
+
+#zpnum_input_grid .ui-block-b {
+  width:60%;
+}
