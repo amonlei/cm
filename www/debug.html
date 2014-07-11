@@ -103,10 +103,10 @@
             </div>
         </div>
         <script  type="text/html" id="log_template">
-            <div class='log' data-content="cc"></div>
+            <div class='log ll' data-content="cc"></div>
         </script>
         <script  type="text/html" id="error_template">
-            <div class='error' data-content="cc"></div>
+            <div class='error ll' data-content="cc"></div>
         </script>
         <script type="text/javascript">
             $(document).on("pageshow","#index",function(){
@@ -175,9 +175,12 @@
                                     // serial.read()
                                     serial.registerReadCallback(
                                         function(buffer) {
-                                            $show_log('2.3 成功读取')
-                                            var view = new Uint8Array(buffer);
-                                            $show_log('(' + view.length + ')');
+                                            // $show_log('2.3 成功读取')
+                                            var view = new Uint32Array(buffer);
+                                            // $show_log('(' + view.length + ')');
+                                            $.each(view,function(b) {
+                                                $show_buffer(b);    
+                                            })       
                                         },
                                         $show_error
                                     );
@@ -191,6 +194,20 @@
                     $show_error('执行错误：' + e)
                 }                
             })
+
+            $(function() {
+                try {
+                    serial.open()
+                }catch(e) {
+                    $show_log('测试环境...')
+                    var view = new Uint32Array(["0x60", "0xd2f0", "0x000186a0", "0x012c", "0x23",'0x000186a0']);
+                    $show_log('(' + view.length + ')');
+                    // $show_error('aaa')
+                    $.each(view,function(i,b) {
+                        $show_buffer(b + ' ');
+                    })
+                }
+            })
         
             $serial_init(function() {$show_log('设备准备好，可以读写.')});
 
@@ -200,6 +217,14 @@
 
             $show_log = function(log) {
                 $('#console').loadTemplate($('#log_template'),{cc :log},{append:true})
+            }
+
+            $show_buffer = function(log) {
+                if($('#console .ll:last').is('.log')) {
+                    $('#console .ll:last').append(log)
+                } else {
+                    $('#console').loadTemplate($('#log_template'),{cc :log},{append:true})
+                }                
             }
 
             $('#clear').on('tap',function() {
