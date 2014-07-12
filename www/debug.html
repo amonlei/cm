@@ -80,12 +80,12 @@
             <div data-role="content">
                 <div class="ui-grid-a">
                     <div class="ui-block-a">
-                        <a id='run' data-role="button" data-icon="carat-r"  data-iconpos="left" href="">
+                        <a class='run' data-role="button" data-icon="carat-r"  data-iconpos="left" href="">
                             尝试读取串口
                         </a>
                     </div>
                     <div class="ui-block-b">
-                        <a id='clear' data-role="button" data-icon="refresh"  data-iconpos="left" href="">
+                        <a class='clear' data-role="button" data-icon="refresh"  data-iconpos="left" href="">
                             清除日志
                         </a>                            
                     </div>
@@ -96,10 +96,25 @@
                     <li data-role="list-divider" role="heading">
                         调试信息
                     </li>
-                    <li id='console'>
-
+                    <li>
+                        <div id='read_buffers_count'></div>
+                        <div id='console'></div>
                     </li>
                 </ul>
+            </div>
+            <div data-role="content">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <a class='run' data-role="button" data-icon="carat-r"  data-iconpos="left" href="">
+                            尝试读取串口
+                        </a>
+                    </div>
+                    <div class="ui-block-b">
+                        <a class='clear' data-role="button" data-icon="refresh"  data-iconpos="left" href="">
+                            清除日志
+                        </a>                            
+                    </div>
+                </div>
             </div>
         </div>
         <script  type="text/html" id="log_template">
@@ -138,7 +153,7 @@
                 }
             })
 
-            $('#run').on('tap',function() {
+            $('.run').on('tap',function() {
                 $show_log('1. 准备读取串口')
                 $db.set('tmp.debug.inputs',{
                     baudRate: $('#baudRate').val(),
@@ -157,7 +172,7 @@
                     //         $show_error('读取串口失败：' + err)
                     //     });
                     serial.requestPermission(
-                    function(successMessage) {
+                        function(successMessage) {
                             $show_log('2.1 获得权限，准备打开: ' +  successMessage)
                             serial.open(
                                 {
@@ -173,14 +188,34 @@
                                     //     $show_log('成功关闭')
                                     // })
                                     // serial.read()
+                                    $buffer96 = [];
+                                    $tmp_buffer96 = [];
+                                    $tmp_buffer96_items_count = 0;
+                                    $buffers_count = 0;
+                                    $read_buffers_count = 0;
                                     serial.registerReadCallback(
                                         function(buffer) {
-                                            // $show_log('2.3 成功读取')
-                                            var view = new Uint32Array(buffer);
-                                            // $show_log('(' + view.length + ')');
-                                            $.each(view,function(b) {
-                                                $show_buffer(b);    
-                                            })       
+                                            try {
+                                                $buffers(buffer,$show_log,$show_error,function(buffer) {
+                                                    if($buffers_count > 5) {
+                                                        $('#console').html('');
+                                                        $show_log('清屏，再来！')
+                                                        $buffers_count = 0;
+                                                    }
+                                                    $.each(buffer,function(i,b) {
+                                                        $show_buffer(b + ' ');
+                                                        if(i % 36 == 0) {
+                                                            $show_log('')
+                                                        }
+                                                    })
+                                                    $show_log('');
+                                                    $buffers_count += 1;
+                                                    $read_buffers_count += 1;
+                                                    $('#read_buffers_count').html('成功读取到 ' + $read_buffers_count + ' 条')
+                                                });
+                                            } catch(e) {
+                                                $show_error('处理buffer错误：' + e)
+                                            }
                                         },
                                         $show_error
                                     );
@@ -195,19 +230,28 @@
                 }                
             })
 
-            $(function() {
-                try {
-                    serial.open()
-                }catch(e) {
-                    $show_log('测试环境...')
-                    var view = new Uint32Array(["0x60", "0xd2f0", "0x000186a0", "0x012c", "0x23",'0x000186a0']);
-                    $show_log('(' + view.length + ')');
-                    // $show_error('aaa')
-                    $.each(view,function(i,b) {
-                        $show_buffer(b + ' ');
-                    })
-                }
-            })
+            // $(function() {
+            //     $show_log(parseInt('d2f0',16))
+            //     // $show_log(parseInt('d2f0',32))
+            // })
+
+            // $(function() {
+            //     try {
+            //         serial.open()
+            //     }catch(e) {
+            //         $show_log('测试环境...')
+            //         // var buffer = new ArrayBuffer(0x60, 0xd2f0, 0x000186a0, 0x012c,0x23,0x000186a0)
+
+            //         log(buffer)
+            //         // $show_log(Integer.parseInt(buffer[0]))
+            //         var view = new Int8Array(buffer);
+            //         $show_log('(' + view.length + ')');
+            //         // $show_error('aaa')
+            //         $.each(view,function(i,b) {
+            //             $show_buffer(b + ' ');
+            //         })
+            //     }
+            // })
         
             $serial_init(function() {$show_log('设备准备好，可以读写.')});
 
@@ -227,7 +271,7 @@
                 }                
             }
 
-            $('#clear').on('tap',function() {
+            $('.clear').on('tap',function() {
                 $('#console').html('');        
             })            
         </script>

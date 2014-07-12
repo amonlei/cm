@@ -141,8 +141,8 @@
                   $current_home_adv_frame_index += 1;
                 }
                 log('show_adv_frame :' + old_index + ' => ' + $current_home_adv_frame_index)
-                $('#adv_img_' + old_index).hide("slide", { direction: "left" },500,function() {
-                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "right" },500);  
+                $('#adv_img_' + old_index).hide("slide", { direction: "left" },400,function() {
+                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "right" },400);  
                 });
               })
 
@@ -155,8 +155,8 @@
                   $current_home_adv_frame_index -= 1;
                 }
                 log('show_adv_frame :' + old_index + ' => ' + $current_home_adv_frame_index)
-                $('#adv_img_' + old_index).hide("slide", { direction: "right" },500,function() {
-                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "left" },500);  
+                $('#adv_img_' + old_index).hide("slide", { direction: "right" },400,function() {
+                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "left" },400);  
                 });
               })
             </script>

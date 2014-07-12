@@ -307,3 +307,54 @@ $show_clock = function() {
     $('#clock small').html('晚上 ' + (now.getHours() - 12) + ':' + now.getMinutes())
   }
 }
+
+$buffers = function(buffer,show_log,show_error,show_buffer) {
+    var uv8 = new Uint8Array(buffer);
+    if(($tmp_buffer96_items_count + uv8.length) > 96) {
+        show_error('超载...直接放弃')
+        $tmp_buffer96 = new Array(96);
+        $tmp_buffer96_items_count = 0;    
+    } else if(uv8.length > 2 && uv8[0].toString(16) == '3c' && uv8[1].toString(16) == '3c') {
+        show_log('开始....(' + uv8.length + ')')
+        $tmp_buffer96 = new Array(96);
+        $tmp_buffer96_items_count = 0;
+        $.each(uv8,function(i,b) {
+            // show_buffer(b + ' ~ ' + b.toString(16) + ' | ');    
+            $tmp_buffer96[i] = b.toString(16);
+        })      
+        $tmp_buffer96_items_count = uv8.length;
+    } else if($tmp_buffer96_items_count > 0 && uv8.length > 2 && uv8[uv8.length - 1].toString(16) == '3e' && uv8[uv8.length - 2].toString(16) == '3e' ) {
+        $.each(uv8,function(i,b) {
+            // show_buffer(b + ' ~ ' + b.toString(16) + ' | ');    
+            $tmp_buffer96[$tmp_buffer96_items_count + i] = b.toString(16);
+        })
+        $tmp_buffer96_items_count += uv8.length;
+        show_log('收尾....(' + uv8.length + ')')
+        show_log('')
+        $tmp_buffer96_items_count = 0;
+        $buffer96 = $tmp_buffer96;
+        // show_buffer($buffer96)
+        // show_log('>>>>>>>>>>>>>>>>>>>>>>>>>>');
+        // show_log('')
+        // $tmp_buffer96 = new Array(96);        
+        // $.each($buffer96,function(i,b) {
+        //     $show_buffer(b + '|');
+        //     if(i % 36 == 0) {
+        //         $show_log('')
+        //     }
+        // })
+        show_buffer($buffer96)
+    } else {
+        if($tmp_buffer96_items_count == 0 ) {
+            show_error('劫道...放弃')
+        } else {
+            show_log('填充....(' + uv8.length + ')')
+            $.each(uv8,function(i,b) {
+                // $show_buffer(b + ' ~ ' + b.toString(16) + ' | ');    
+                $tmp_buffer96[$tmp_buffer96_items_count + i] = b.toString(16);
+            })  
+            $tmp_buffer96_items_count += uv8.length;
+        }
+
+    }
+}

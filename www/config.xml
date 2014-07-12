@@ -69,5 +69,8 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
+    <!-- <feature name="Serial">
+        <param name="android-package" value="org.stereolux.cordova.serial.Serial" />
+    </feature> -->
     <content src="debug.html" />
 </widget>
