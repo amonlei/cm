@@ -7,7 +7,13 @@
 
 .nav_bar .left_block a,
 .nav_bar .mid_block a,
-.nav_bar .right_block a {
+.nav_bar .right_block a,
+.nav_bar .left_block a:hover,
+.nav_bar .mid_block a:hover,
+.nav_bar .right_block a:hover,
+.nav_bar .left_block a:visited,
+.nav_bar .mid_block a:visited,
+.nav_bar .right_block a:visited {
   text-decoration: none;
   color:#666666;  
 }
@@ -54,13 +60,15 @@
   text-align: center;
 }
 
-.nav_bar .mid_block .weather {
+.nav_bar .right_block .weather {
   position: absolute;
+  right:135px;
+  top:5px;
 }
 
-.nav_bar .mid_block .weather content{
-  left:400px;
-  top:-30px;
+.nav_bar .right_block .weather content{
+  /*left:400px;
+  top:-30px;*/
 }
 
 .nav_bar .right_block {
@@ -79,5 +87,5 @@
   background-position: 32px -8px;
   /*padding-left:20px;*/
   display:inline-block;
-  margin-right:20px;
+  margin-right:140px;
 }

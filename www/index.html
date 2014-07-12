@@ -19,12 +19,14 @@
         <script type="text/javascript" src='js/jquery.loadTemplate-1.4.4.min.js'></script>
         <script type="text/javascript" src='js/jquery.xml2json.js'></script>
         <script type="text/javascript" src='js/jquery.storageapi.min.js'></script>
+        <script type="text/javascript" src='js/jquery.timers-1.2.js'></script>
+        <script type="text/javascript" src='js/jquery.effect-slide.js'></script>
         <script type="text/javascript" src='js/app.js'></script>
         <script type="text/javascript" src='js/md5.js'></script>
         <script src="js/jquery.mobile-1.4.2.min.js"></script>  
         <title>智能球车</title>
     </head>
-    <body>
+    <body id='body'>
         <div data-role="page" data-control-title="Home" id="home">
             <div class='nav_bar' data-theme="a" data-role="header">
                 <div class="ui-grid-b">
@@ -52,9 +54,15 @@
                     </a> -->
                   </div>
                   <div class="ui-block-b mid_block">
-                    <div class='clock'>
+                    <div id='clock' class='clock'>
                       <small>中午 11:12</small>
                     </div>
+                  </div>
+                  <div class="ui-block-c right_block">
+                    <a href="" class='battery_power'>
+                      40%
+                    </a>
+
                     <div class='weather'>
                       <content>
                         <img src="http://mobile.weather.com.cn/images/dayb/04.png">
@@ -70,19 +78,108 @@
                       </content>
                     </div>
                   </div>
-                  <div class="ui-block-c right_block">
-                    <a href="" class='battery_power'>
-                      40%
-                    </a>
-                  </div>
               </div><!-- /grid-b -->
             </div>
             <div role="main" class="ui-content" id='adv'>
-              <div>
-                aa
-              </div>
+              <img src="img/ad/home/0.png" id='adv_img_1'>
+              <img src="img/ad/home/1.png" class='hidden' id='adv_img_2'>
+              <img src="img/ad/home/2.png" class='hidden' id='adv_img_3'>
+              <img src="img/ad/home/3.png" class='hidden' id='adv_img_4'>
+              <img src="img/ad/home/4.png" class='hidden' id='adv_img_5'>
             </div>
+            <script type="text/javascript"> 
+              $current_home_adv_frame_index = 1;
+              $home_max_adv_frames_count = 5;
+              $home_adv_paused = false;
+              $home_adv_skip_this_frame = false;
+
+              $(document).everyTime('15s','home_adv_play',function() {
+                log('开始播放adv....')
+                if(!$home_adv_paused) {
+                  if($home_adv_skip_this_frame) {
+                    $home_adv_skip_this_frame = false;
+                  } else {
+                    $next_adv_frame();                                        
+                  }                  
+                }
+              })
+
+              $next_adv_frame = function() {
+                var old_index = $current_home_adv_frame_index;                
+                if($current_home_adv_frame_index == $home_max_adv_frames_count) {
+                  $current_home_adv_frame_index = 1;
+                } else {
+                  $current_home_adv_frame_index += 1;
+                }
+                $show_adv_frame(old_index);
+              }
+
+              $show_adv_frame = function(old_index) {
+                log('show adv frame ' + $current_home_adv_frame_index);
+                $('#adv_img_' + old_index).fadeOut(1000,function() {
+                  $('#adv_img_' + $current_home_adv_frame_index).fadeIn(2000);  
+                });
+              }
+
+              $(document).everyTime('30s','clock',$show_clock);
+
+              $('#adv').on('vmousedown',function() {
+                log('vmousedown');
+                $home_adv_paused = true;
+              })
+
+              $('#adv').on('vmouseup',function() {
+                log('vmouseup');
+                $home_adv_paused = false;
+              })
+
+              $('#adv').on('swipeleft',function() {
+                $home_adv_skip_this_frame = true;
+                var old_index = $current_home_adv_frame_index;
+                if($current_home_adv_frame_index == $home_max_adv_frames_count) {
+                  $current_home_adv_frame_index = 1;
+                } else {
+                  $current_home_adv_frame_index += 1;
+                }
+                log('show_adv_frame :' + old_index + ' => ' + $current_home_adv_frame_index)
+                $('#adv_img_' + old_index).hide("slide", { direction: "left" },500,function() {
+                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "right" },500);  
+                });
+              })
+
+              $('#adv').on('swiperight',function() {
+                $home_adv_skip_this_frame = true;
+                var old_index = $current_home_adv_frame_index;
+                if($current_home_adv_frame_index == 1) {
+                  $current_home_adv_frame_index = $home_max_adv_frames_count;
+                } else {
+                  $current_home_adv_frame_index -= 1;
+                }
+                log('show_adv_frame :' + old_index + ' => ' + $current_home_adv_frame_index)
+                $('#adv_img_' + old_index).hide("slide", { direction: "right" },500,function() {
+                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "left" },500);  
+                });
+              })
+            </script>
         </div>
+        <script type="text/javascript">          
+            $(document).on('pageinit','#home',function(){
+              $('#body').addClass('overflow_hidden');
+            });
+            $(document).on('pageshow','#home',function(){
+              log('#home show');
+              $('#body').addClass('overflow_hidden');
+              $home_adv_paused = false;
+              $show_clock();
+            });
+            $(document).on('pagehide','#home',function(){
+              log('#home hide');
+              $home_adv_paused = true;
+              $('#body').removeClass('overflow_hidden');
+            });
+
+            // $('#home').on('')
+        </script>
         <div data-role="page" data-control-title="Home" id="batterys_index">
             <div data-theme="a" data-role="header">
                 <h1 class="ui-title">

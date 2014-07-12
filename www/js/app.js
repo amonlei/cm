@@ -289,3 +289,15 @@ $serial_init = function(callback) {
     callback();
   }, false);
 }
+
+$show_clock = function() {
+  log('show clock')
+  var now = new Date()
+  if(now.getHours() < 12) {
+    $('#clock small').html('上午 ' + now.getHours() + ':' + now.getMinutes());
+  } else if(now.getHours() > 12 && now.getHours() < 15) {
+    $('#clock small').html('中午 ' + (now.getHours() - 12) + ':' + now.getMinutes())
+  } else {
+    $('#clock small').html('下午 ' + (now.getHours() - 12) + ':' + now.getMinutes())
+  }
+}

@@ -1,5 +1,15 @@
+.overflow_hidden {
+
+  overflow: hidden;
+}
+
 #home #adv {
-  background-color:red;
-  height:100%;
+  /*background-color:red;  */
   display:block;
+  padding:0px;
+}
+
+#home #adv img {
+  width:1024px;
+  height:auto;
 }
