@@ -1,0 +1,35 @@
+.weather {
+  position: relative;
+  height:110px;
+}
+
+.weather content{
+  width:120px;
+  display:block;
+  color:white;
+  background:#ccc;
+  border-radius: 10px;
+  padding:5px;
+  height:100px;
+  position: absolute;
+  z-index: 1000;
+}
+
+.weather img {
+  height:80px;
+  position: absolute;
+}
+
+.weather city {
+  padding-top:50px;
+}
+
+.weather img,
+.weather city,
+.weather temp,
+.weather desc {
+  display:block;
+  text-align:right;
+  font-size:12px;
+  font-weight:normal;
+}
