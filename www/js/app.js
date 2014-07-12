@@ -293,11 +293,17 @@ $serial_init = function(callback) {
 $show_clock = function() {
   log('show clock')
   var now = new Date()
-  if(now.getHours() < 12) {
+  if(now.getHours() >= 0 && now.getHours() < 4) {
+    $('#clock small').html('深夜 ' + now.getHours() + ':' + now.getMinutes());
+  } else if(now.getHours() >= 4 && now.getHours() < 7) {
+    $('#clock small').html('早晨 ' + now.getHours() + ':' + now.getMinutes());
+  } else if(now.getHours() >= 7 && now.getHours() < 12) {
     $('#clock small').html('上午 ' + now.getHours() + ':' + now.getMinutes());
-  } else if(now.getHours() > 12 && now.getHours() < 15) {
+  } else if(now.getHours() >= 12 && now.getHours() < 15) {
     $('#clock small').html('中午 ' + (now.getHours() - 12) + ':' + now.getMinutes())
-  } else {
+  } else if(now.getHours() >= 15 && now.getHours() < 19) {
     $('#clock small').html('下午 ' + (now.getHours() - 12) + ':' + now.getMinutes())
+  } else {
+    $('#clock small').html('晚上 ' + (now.getHours() - 12) + ':' + now.getMinutes())
   }
 }
