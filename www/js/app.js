@@ -299,7 +299,9 @@ $show_clock = function() {
     $('#clock small').html('早晨 ' + now.getHours() + ':' + now.getMinutes());
   } else if(now.getHours() >= 7 && now.getHours() < 12) {
     $('#clock small').html('上午 ' + now.getHours() + ':' + now.getMinutes());
-  } else if(now.getHours() >= 12 && now.getHours() < 15) {
+  } else if(now.getHours() == 12) {
+    $('#clock small').html('中午 ' + 12 + ':' + now.getMinutes())
+  } else if(now.getHours() > 12 && now.getHours() < 15) {
     $('#clock small').html('中午 ' + (now.getHours() - 12) + ':' + now.getMinutes())
   } else if(now.getHours() >= 15 && now.getHours() < 19) {
     $('#clock small').html('下午 ' + (now.getHours() - 12) + ':' + now.getMinutes())
