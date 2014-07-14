@@ -1,21 +1,43 @@
-.battery {
+
+
+#battery #battery_info,
+#battery #batteries {
+  float:left;
+}
+
+#battery #battery_info {
+  width:300px;
+}
+
+#battery #batteries {
+  width:670px;
+  padding:10px;
+  margin-left:0px;
+}
+
+#battery .battery {
   /*width:180;*/
-  padding-bottom:20px;
-  padding-right:20px;
+  padding-bottom:15px;
+  margin-left:25px;
+  float:left;
 }
 
-.battery  .ui-block-a{
-  width:90px;
+#battery .battery  .ui-block-a{
+  width:55px;
 }
 
-.battery img {
-  width:96px;
-  height:96px;
+#battery .battery  .ui-block-b{
+  width:134px;
+}
+
+#battery .battery img {
+  width:72px;
+  height:72px;
   margin-top:5px;
-  padding-right:10px;
+  /*padding-right:10px;*/
 }
 
-.battery .ui-field-contain {
+#battery .battery .ui-field-contain {
   border-bottom:0px;
   padding-bottom:5px;
   padding-top:0px;
@@ -24,16 +46,34 @@
   margin-bottom:0px;
 }
 
-.battery .name {
+#battery .battery .name {
   font-weight:bold;
   font-size:18px;
 }
 
+#battery .battery .tmp {
+  color:#bd270d;
+}
+
+#battery .battery .vf {
+  color:#f9942e;
+}
+
+#battery #battery_info .err {
+  color:#bd270d;
+  font-weight:bold;
+}
+
+#battery #battery_info .err span {
+  font-weight:bold;
+}
+
+/*
 @media only screen and (min-device-width:500px){
-  .battery {
+#battery  .battery {
     width:180;
     padding-bottom:20px;
     padding-right:20px;
     float:left;
   }
-}
+}*/

@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/weather.css">
         <link rel="stylesheet" href="css/nav_bar.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/batteries.css">
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="serial.js"></script>
@@ -32,54 +33,45 @@
         <div data-role="page" data-control-title="Home" id="home">
             <div class='nav_bar' data-theme="a" data-role="header">
                 <div class="ui-grid-b">
-                  <div class="ui-block-a left_block">
-                    <a href="#home" class='item home'>
-                      首页
-                    </a>
-                    <a href="#home" class='item golf'>
-                      球场
-                    </a>
-                    <a href="debug.html" class='item help' rel='external'>
-                      救援
-                    </a>
-                    <a href="#home" class='item about'>
-                      关于
-                    </a>
-                    <!-- <a href="#home" class='item battery'>
-                      电池
-                    </a> -->
-                    <!-- <a href="#home" class='item after_sale'>
-                      售后
-                    </a>
-                    <a href="#home" class='item repair'>
-                      维修
-                    </a> -->
-                  </div>
-                  <div class="ui-block-b mid_block">
-                    <div id='clock' class='clock'>
-                      <small>中午 11:12</small>
+                    <div class="ui-block-a left_block">
+                        <a href="#home" class='item home'>
+                          首页
+                        </a>
+                        <a href="#home" class='item golf'>
+                          球场
+                        </a>
+                        <a href="debug.html" class='item help' rel='external'>
+                          救援
+                        </a>
+                        <a href="#home" class='item about'>
+                          关于
+                        </a>
                     </div>
-                  </div>
-                  <div class="ui-block-c right_block">
-                    <a href="" class='battery_power'>
-                      40%
-                    </a>
-                    <div class='weather'>
-                      <content>
-                        <img src="img/weather/04.png">
-                        <city>
-                          海口
-                        </city>
-                        <temp>
-                          25~34°
-                        </temp>
-                        <desc>
-                          多云转雷阵雨
-                        </desc>
-                      </content>
+                    <div class="ui-block-b mid_block">
+                        <div id='clock' class='clock'>
+                          <small>中午 11:12</small>
+                        </div>
                     </div>
-                  </div>
-              </div><!-- /grid-b -->
+                    <div class="ui-block-c right_block">
+                        <a href="#battery" data-transition="slide" class='battery_power'>
+                          40%
+                        </a>
+                        <div class='weather'>
+                          <content>
+                            <img src="img/weather/04.png">
+                            <city>
+                              海口
+                            </city>
+                            <temp>
+                              25~34°
+                            </temp>
+                            <desc>
+                              多云转雷阵雨
+                            </desc>
+                          </content>
+                        </div>
+                    </div>
+                </div><!-- /grid-b -->
             </div>
             <div role='main' class='ui-content' id='adv'>
                 <div class="swiper-container">
@@ -112,40 +104,129 @@
                   autoplay: 8000,
                   autoplayDisableOnInteraction: false,
                   loop: true
-              })              
+              })            
+
+              $(document).on('pageinit','#home',function(){
+                $('#body').addClass('overflow_hidden');
+              });
+              $(document).on('pageshow','#home',function(){
+                log('#home show');
+                $home_adv.startAutoplay();                
+                $('#body').addClass('overflow_hidden');
+                $show_clock();
+              });
+              $(document).on('pagehide','#home',function(){
+                log('#home hide');
+                $home_adv.stopAutoplay();
+                $('#body').removeClass('overflow_hidden');
+              });
             </script>            
         </div>
-        <script type="text/javascript">          
-            $(document).on('pageinit','#home',function(){
-              $('#body').addClass('overflow_hidden');
-            });
-            $(document).on('pageshow','#home',function(){
-              log('#home show');
-              $('#body').addClass('overflow_hidden');
-              $home_adv.startAutoplay();
-              $show_clock();
-            });
-            $(document).on('pagehide','#home',function(){
-              log('#home hide');              
-              $home_adv.stopAutoplay();
-              $('#body').removeClass('overflow_hidden');
-            });
-
-            // $('#home').on('')
-        </script>
-        <div data-role="page" data-control-title="Home" id="batterys_index">
-            <div data-theme="a" data-role="header">
-                <h1 class="ui-title">
-                    电池健康状态
-                </h1>
+        <div data-role="page" data-control-title="Home" id="battery">            
+            <div class='nav_bar' data-theme="a" data-role="header">
+                <div class="ui-grid-b">
+                    <div class="ui-block-a left_block">
+                      <a href="#home" class='item home' data-transition="slide" data-direction="reverse">
+                        首页
+                      </a>
+                      <a href="" class='item power'>
+                        电池
+                      </a>
+                      <a href="#home" class='item after_sale'>
+                        售后
+                      </a>
+                      <a href="#home" class='item repair'>
+                        维修
+                      </a>
+                    </div>
+                    <div class="ui-block-b mid_block">
+                        <div id='clock' class='clock'>
+                          <small>中午 11:12</small>
+                        </div>
+                    </div>
+                    <div class="ui-block-c right_block">
+                        <a href="debug.html" data-transition="slide" class='battery_power' ref='external'>
+                          40%
+                        </a>
+                        <div class='weather'>
+                            <content>
+                                <img src="img/weather/04.png">
+                                <city>
+                                  海口
+                                </city>
+                                <temp>
+                                  25~34°
+                                </temp>
+                                <desc>
+                                  多云转雷阵雨
+                                </desc>
+                            </content>
+                        </div>
+                    </div>
+              </div><!-- /grid-b -->
             </div>
-            <div id='batteries' role="main" class="ui-content">
+            <div role="main" class="ui-content">
+                <div id='battery_info'>
+                    <ul data-role="listview" data-inset="true">
+                        <li >
+                          <b>运行状态</b>
+                          <span id='clLength' class='ui-li-value'>
+                            正常主机模式
+                          </span>  
+                        </li> 
+                    </ul>
+                    <ul data-role="listview" data-inset="true">
+                        <li >
+                          总电量
+                          <span id='clLength' class='ui-li-value'>
+                            100000mAH
+                          </span>  
+                        </li> 
+                        <li >
+                          剩余电量
+                          <span id='clLength' class='ui-li-value'>
+                            96%
+                          </span> 
+                        </li> 
+                        <li >
+                          总电压
+                          <span id='clLength' class='ui-li-value'>
+                            54000mV
+                          </span>
+                        </li> 
+                        <li >
+                          总电流
+                          <span id='clLength' class='ui-li-value'>
+                            100000mA
+                          </span> 
+                        </li>
+                        <li >
+                          总电压
+                          <span id='clLength' class='ui-li-value '>
+                            54000mV
+                          </span> 
+                        </li> 
+                    </ul>
+                    <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider" class='err'>故障</li>
+                        <li>
+                            <b>电芯接头松</b>
+                            <p class="ui-li-aside"><strong>11日 15时13分</strong>PM</p>
+                        </li>
+                        <li data-role="list-divider" class='err'>扩展故障</li>
+                        <li>
+                            <b>电芯接头松</b>
+                            <p class="ui-li-aside"><strong>11日 15时13分</strong>PM</p>
+                        </li>
+                    </ul>
+                </div>
+                <div id='batteries'></div>
             </div>
             <script  type="text/html" id="battery_in_index_template">
                 <div class="battery ui-grid-a">
                     <div class="ui-block-a">
                         <div data-controltype="image">
-                            <img src="icon.png">
+                            <img src="img/battery/ver/nocharge/3_48x48.png">
                         </div>
                     </div>
                     <div class="ui-block-b">
@@ -153,13 +234,10 @@
                             <span data-content="name"></span>
                         </div>
                         <div class="ui-field-contain">
-                            电量：<span data-content="eq"></span>%
+                            温度：<span class='tmp' data-content="c"></span>
                         </div>
                         <div class="ui-field-contain">
-                            健康：<span data-content="soh"></span>%
-                        </div>
-                        <div class="ui-field-contain">
-                            循环：<b data-content="cc"></b>次
+                            电压：<span class='vf' data-content="v"></span>
                         </div>
                     </div>
                 </div>
@@ -167,54 +245,68 @@
             <script type="text/javascript">
                 $bs = [{
                     name: '1号',
-                    eq: 80,
-                    soh: 98,
-                    cc: 12
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '2号',
-                    eq: 70,
-                    soh: 88,
-                    cc: 13
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '3号',
-                    eq: 90,
-                    soh: 97,
-                    cc: 12
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '4号',
-                    eq: 95,
-                    soh: 95,
-                    cc: 13
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '5号',
-                    eq: 98,
-                    soh: 90,
-                    cc: 15
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '6号',
-                    eq: 100,
-                    soh: 99,
-                    cc: 3
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '7号',
-                    eq: 60,
-                    soh: 75,
-                    cc: 50
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '8号',
-                    eq: 99,
-                    soh: 99,
-                    cc: 3
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '9号',
-                    eq: 75,
-                    soh: 88,
-                    cc: 5
+                    c: '32.003°C',
+                    v: '3300mV'
                 },{
                     name: '10号',
-                    eq: 55,
-                    soh: 67,
-                    cc: 200
+                    c: '32.003°C',
+                    v: '3300mV'
+                },{
+                    name: '11号',
+                    c: '32.003°C',
+                    v: '3300mV'
+                },{
+                    name: '12号',
+                    c: '32.003°C',
+                    v: '3300mV'
+                },{
+                    name: '12号',
+                    c: '32.003°C',
+                    v: '3300mV'
+                },{
+                    name: '14号',
+                    c: '32.003°C',
+                    v: '3300mV'
+                },{
+                    name: '15号',
+                    c: '32.003°C',
+                    v: '3300mV'
+                },{
+                    name: '16号',
+                    c: '32.003°C',
+                    v: '3300mV'
                 }];
                 $("#batteries").loadTemplate($("#battery_in_index_template"), $bs);
                 $(function() {
@@ -223,71 +315,6 @@
                     })
                 })                
             </script>
-        </div>            
-        <div data-role="page" data-control-title="Home" id="show">
-            <div data-theme="a" data-role="header">
-                <h1 class="ui-title">
-                    1号电池健康状态
-                </h1>
-                <a href="#index" data-iconpos="left" class="ui-btn ui-icon-bullets ui-btn-icon-notext ui-corner-all ui-btn-right">
-                    设置
-                </a>
-            </div>
-            <div role="main" class="ui-content">
-                <div style="" data-controltype="image">
-                    <img style="width: 128px; height: 128px" src="icon.png">
-                </div>
-                <div id='status' class="ui-field-contain">
-                    <fieldset data-role="controlgroup" data-type="horizontal">
-                        <legend>当前状态</legend>
-                        <input name="status" id="status_1" value="空闲" checked="checked" type="radio">
-                        <label for="status_1" class='status_label1'>空闲</label>
-                        <input name="status" id="status_2" value="繁忙" type="radio">
-                        <label for="status_2" class='status_label2'>繁忙</label>
-                    </fieldset>
-                </div>
-                <ul data-role="listview" data-div   ider-theme="a" data-inset="true">
-                    <li data-role="list-divider" role="heading">                    
-                        联系电话
-                    </li>
-                    <li>
-                        <a id='link_mobile' href="setting.html#edit"  rel='external' data-transition="slide" class='ui-icon-edit'> 
-                            读取中...
-                        </a>
-                    </li>
-                    <li data-role="list-divider" role="heading">
-                        服务范围
-                    </li>
-                    <li>
-                        <a id='clserver' href="setting.html#edit"  rel='external' class='ui-icon-edit'>全国</a>
-                    </li>
-                </ul>
-                <ul data-role="listview" data-div   ider-theme="a" data-inset="true">
-                    <li data-role="list-divider" role="heading">
-                        车身长度
-                    </li>
-                    <li>
-                        <a id='clLength' href="setting.html#edit"  rel='external' data-transition="slide" class='ui-icon-edit'> 
-                            读取中...
-                        </a> 
-                    </li>
-                </ul>   
-                <a class='ui-btn ui-corner-all ui-btn-icon-left ui-icon-grid' href="setting.html" rel='external'>
-                    更多设置......
-                </a>      
-                <a href="#login_out_confirm" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-btn-icon-left ui-icon-power">我要退出登录</a>
-                <div data-role="popup" id="login_out_confirm"  data-dismissible="false" style="max-width:400px;">
-                    <div data-role="header" data-theme="a">
-                    <h1>即将离线?</h1>
-                    </div>
-                    <div role="main" class="ui-content">
-                        <h3 class="ui-title">您确认要让自己下线，导致货主们无法找到您吗?</h3>
-                    <p>当然，休息下也是可以的，只要重新登录就恢复了.</p>
-                        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-check" data-rel="back">不了，我要继续在线</a>
-                        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-delete" data-rel="back" data-transition="flow" id='login_out'>是的，我要下线</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </body>
 </html>    
