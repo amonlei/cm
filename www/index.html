@@ -8,6 +8,7 @@
 
         <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
         <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/idangerous.swiper.css">
         <link rel="stylesheet" href="css/weather.css">
         <link rel="stylesheet" href="css/nav_bar.css">
         <link rel="stylesheet" href="css/main.css">
@@ -23,6 +24,7 @@
         <script type="text/javascript" src='js/jquery.effect-slide.js'></script>
         <script type="text/javascript" src='js/app.js'></script>
         <script type="text/javascript" src='js/md5.js'></script>
+        <script src="js/idangerous.swiper-2.1.min.js"></script>
         <script src="js/jquery.mobile-1.4.2.min.js"></script>  
         <title>智能球车</title>
     </head>
@@ -79,87 +81,38 @@
                   </div>
               </div><!-- /grid-b -->
             </div>
-            <div role="main" class="ui-content" id='adv'>
-              <img src="img/ad/home/0.png" id='adv_img_1'>
-              <img src="img/ad/home/1.png" class='hidden' id='adv_img_2'>
-              <img src="img/ad/home/2.png" class='hidden' id='adv_img_3'>
-              <img src="img/ad/home/3.png" class='hidden' id='adv_img_4'>
-              <img src="img/ad/home/4.png" class='hidden' id='adv_img_5'>
-            </div>
-            <script type="text/javascript"> 
-              $current_home_adv_frame_index = 1;
-              $home_max_adv_frames_count = 5;
-              $home_adv_paused = false;
-              $home_adv_skip_this_frame = false;
-
-              $(document).everyTime('15s','home_adv_play',function() {
-                log('开始播放adv....')
-                if(!$home_adv_paused) {
-                  if($home_adv_skip_this_frame) {
-                    $home_adv_skip_this_frame = false;
-                  } else {
-                    $next_adv_frame();                                        
-                  }                  
-                }
-              })
-
-              $next_adv_frame = function() {
-                var old_index = $current_home_adv_frame_index;                
-                if($current_home_adv_frame_index == $home_max_adv_frames_count) {
-                  $current_home_adv_frame_index = 1;
-                } else {
-                  $current_home_adv_frame_index += 1;
-                }
-                $show_adv_frame(old_index);
-              }
-
-              $show_adv_frame = function(old_index) {
-                log('show adv frame ' + $current_home_adv_frame_index);
-                $('#adv_img_' + old_index).fadeOut(1000,function() {
-                  $('#adv_img_' + $current_home_adv_frame_index).fadeIn(2000);  
-                });
-              }
-
-              $(document).everyTime('30s','clock',$show_clock);
-
-              $('#adv').on('vmousedown',function() {
-                log('vmousedown');
-                $home_adv_paused = true;
-              })
-
-              $('#adv').on('vmouseup',function() {
-                log('vmouseup');
-                $home_adv_paused = false;
-              })
-
-              $('#adv').on('swipeleft',function() {
-                $home_adv_skip_this_frame = true;
-                var old_index = $current_home_adv_frame_index;
-                if($current_home_adv_frame_index == $home_max_adv_frames_count) {
-                  $current_home_adv_frame_index = 1;
-                } else {
-                  $current_home_adv_frame_index += 1;
-                }
-                log('show_adv_frame :' + old_index + ' => ' + $current_home_adv_frame_index)
-                $('#adv_img_' + old_index).hide("slide", { direction: "left" },400,function() {
-                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "right" },400);  
-                });
-              })
-
-              $('#adv').on('swiperight',function() {
-                $home_adv_skip_this_frame = true;
-                var old_index = $current_home_adv_frame_index;
-                if($current_home_adv_frame_index == 1) {
-                  $current_home_adv_frame_index = $home_max_adv_frames_count;
-                } else {
-                  $current_home_adv_frame_index -= 1;
-                }
-                log('show_adv_frame :' + old_index + ' => ' + $current_home_adv_frame_index)
-                $('#adv_img_' + old_index).hide("slide", { direction: "right" },400,function() {
-                  $('#adv_img_' + $current_home_adv_frame_index).show("slide", { direction: "left" },400);  
-                });
-              })
-            </script>
+            <div role='main' class='ui-content' id='adv'>
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide red-slide">
+                      <img src="img/ad/home/0.png" id='adv_img_1'>
+                    </div>
+                    <div class="swiper-slide blue-slide">
+                      <img src="img/ad/home/1.png" id='adv_img_2'>
+                    </div>
+                    <div class="swiper-slide orange-slide">
+                      <img src="img/ad/home/2.png" id='adv_img_3'>
+                    </div>
+                    <div class="swiper-slide green-slide">
+                      <img src="img/ad/home/3.png" id='adv_img_4'>
+                    </div>
+                    <div class="swiper-slide pink-slide">
+                      <img src="img/ad/home/4.png" id='adv_img_5'>
+                    </div>
+                  </div>
+                  <div class="pagination"></div>
+                </div>
+            </div>  
+            <script>
+              $home_adv = new Swiper('.swiper-container',{
+                  pagination: '.pagination',
+                  paginationClickable: true,
+                  freeMode: false,
+                  freeModeFluid: true,
+                  autoplay: 8000,
+                  loop: true
+              })              
+            </script>            
         </div>
         <script type="text/javascript">          
             $(document).on('pageinit','#home',function(){
@@ -168,12 +121,12 @@
             $(document).on('pageshow','#home',function(){
               log('#home show');
               $('#body').addClass('overflow_hidden');
-              $home_adv_paused = false;
+              $home_adv.startAutoplay();
               $show_clock();
             });
             $(document).on('pagehide','#home',function(){
-              log('#home hide');
-              $home_adv_paused = true;
+              log('#home hide');              
+              $home_adv.stopAutoplay();
               $('#body').removeClass('overflow_hidden');
             });
 
