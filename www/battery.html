@@ -548,7 +548,7 @@
                 // log('设备准备好，可以读写.')                
                 $listen_to_serial_and_deal_with_buffers();
             });    
-            $(document).everyTime('10s','about_batteries',function() {
+            $(document).everyTime('2s','about_batteries',function() {
                 log('显示电量') 
                 $about_batterys(function(bcs) {
                     $('#battery_power').html(bcs.total_pp + '%')
