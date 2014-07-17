@@ -83,16 +83,20 @@ $.fn.extend({
 
 $append_to_errors = function(errs) {
     if(!$.isArray(errs)) {
-      errs = [errs]
+        errs = [errs]
     }
     if(errs.length > 0 ){
-      $("#errors ul").loadTemplate($("#error_template"), errs);
-      $('#errors').slideDown();  
+        $("#errors ul").loadTemplate($("#error_template"), errs);
+        $('#errors').slideDown();  
     }
 }
 
-function log(message) {
+function log(message,callback) {
   console.log(message)
+  if(callback != undefined) {
+      console.log('callback')
+      callback(message)
+  }
 }
 
 // var is_pc = true;
@@ -359,4 +363,113 @@ $buffers = function(buffer,show_log,show_error,show_buffer) {
         }
 
     }
+}
+
+$buffer96 = []
+
+$listen_to_serial_and_deal_with_buffers = function() {
+    log('设备准备好，可以读写.',$show_last_log)
+    log('1. 准备读取串口',$show_last_log)
+    try {
+        log('2. 注册串口 ',$show_last_log)
+        serial.requestPermission(
+            function(successMessage) {
+                log('2.1 获得权限，准备打开: ' +  successMessage,$show_last_log)
+                serial.open({
+                        baudRate: 38400,
+                        dataBits: 8,
+                        stopBits: 1,
+                        parity: 0
+                    },
+                    function(successMessage) {
+                        log('2.2 端口打开，注册读取: ' + successMessage,$show_last_log)
+                        $buffer96 = [];
+                        $tmp_buffer96 = [];
+                        $tmp_buffer96_items_count = 0;
+                        $buffers_count = 0;
+                        $read_buffers_count = 0;
+                        serial.registerReadCallback(
+                            function(buffer) {
+                                try {
+                                    $buffers(buffer,log,log,function(buffer) {
+                                        if($buffers_count > 5) {
+                                            $('#console').html('');
+                                            log('清屏，再来！',$show_last_log)
+                                            $buffers_count = 0;
+                                        }
+                                        $.each(buffer,function(i,b) {
+                                            // $show_buffer(b + ' ');
+                                            if(i % 36 == 0) {
+                                                log('')
+                                            }
+                                        })
+                                        // log('');
+                                        $buffers_count += 1;
+                                        $read_buffers_count += 1;
+                                        log('成功读取到 ' + $read_buffers_count + ' 条',$show_last_log)
+                                        // if(success_callback != undefined) {
+                                        //   success_callback();  
+                                        // } 
+                                        // $('#read_buffers_count').html('成功读取到 ' + $read_buffers_count + ' 条')
+                                    });
+                                } catch(e) {
+                                    log('处理buffer错误：' + e,$show_last_log)
+                                }
+                            },
+                            function(e) {
+                              $alert_and_retry_listen_to_serial_and_deal_with_buffers('读取失败：' + e)
+                            }
+                        );
+                    },
+                    function(e) {
+                        $alert_and_retry_listen_to_serial_and_deal_with_buffers('打开串口失败：' + e)
+                    }
+                );
+            },
+            function(e) {
+                $alert_and_retry_listen_to_serial_and_deal_with_buffers('请求权限失败：' + e);
+            }
+        );
+    } catch(e) {
+        $alert_and_retry_listen_to_serial_and_deal_with_buffers('执行错误：' + e)
+    }
+}
+
+$alert_and_retry_listen_to_serial_and_deal_with_buffers = function(error) {
+  log(error,$show_last_log)
+  $.mobile.loading('show','a',error);
+  setTimeout(function() {
+    $.mobile.loading('hide');
+    $listen_to_serial_and_deal_with_buffers()
+  },3000)
+}
+
+
+// 非battery.html不显示
+$show_last_log = function(message) {
+  // $('#the_last_log').html(message)
+}
+
+$about_batterys = function(callback) {
+  if($buffer96.length !=96 ) {
+      log('暂未获取电量信息')
+      $('#battery_power b').html('??%')
+  } else {
+      try{
+          var bcs = $bcs($buffer96);          
+          callback(bcs);
+          $.mobile.loading('hide');
+      } catch(e) {
+          $.mobile.loading('show','a','获取电量信息失败：' + e + '. 重试中...');
+      }                    
+  }
+
+}
+
+$try = function(callback) {
+  try{
+    callback()
+  } catch(e) {
+    alert(e)    
+  }
 }

@@ -86,3 +86,9 @@
     float:left;
   }
 }*/
+
+#the_last_log {
+  font-size:11px;
+  white-space: normal;
+  height: auto;
+}
