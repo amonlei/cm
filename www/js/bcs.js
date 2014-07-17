@@ -1,3 +1,34 @@
+$bcs_status_c2v = {
+  '00': '正常主机模式',
+  '01': '正常从机模式',
+  '02': '设置调试模式',
+  '03': '关机模式'
+}
+
+$bcs_error_c2v = {
+  '00': '无故障',
+  '01': '电池过压',
+  '02': '电池欠压',
+  '04': 'SOC低',
+  '08': '过流',
+  '10': '温度过低',
+  '20': '温度过高',
+  '40': '电芯接头松',
+  '80': '不平衡'
+}
+
+$bcs_ext_error_c2v = {
+  '00': '无故障',
+  '01': '欠费保护',
+  '02': 'GPS故障',
+  '04': '电池寿命故障',
+  '08': '端头故障',
+  '10': '存储器故障',
+  '20': '蓝牙故障',
+  '40': '实时时钟故障',
+  '80': 'BCU电源故障'
+}
+
 $bcs = function(bf) {
   if(bf != undefined && bf.length == 96) {
     return {
@@ -39,7 +70,8 @@ $bcs = function(bf) {
       tmp6: parseInt(bf[80] + bf[81],16) + '.' + parseInt(bf[82] + bf[83],16),
 
       bcs_tmp: parseInt(bf[84] + bf[85],16) + '.' + parseInt(bf[86] + bf[87],16),
-      total_p: parseInt(bf[88] + bf[89] + bf[90] + bf[91],16)
+      total_p: parseInt(bf[88] + bf[89] + bf[90] + bf[91],16),
+      created_at: new Date()
     }  
   } else {
     return undefined;

@@ -78,3 +78,13 @@
 .swiper-active-switch {
   background: #fff;
 }
+
+#signal {
+  position: relative;  
+}
+
+#signal img {
+  position: absolute;
+  left:6px;
+  top:8px;
+}

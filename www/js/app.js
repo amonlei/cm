@@ -366,15 +366,23 @@ $buffers = function(buffer,show_log,show_error,show_buffer) {
 }
 
 $buffer96 = []
+$serial_permission_responsed = false;
 
 $listen_to_serial_and_deal_with_buffers = function() {
-    log('设备准备好，可以读写.',$show_last_log)
+    log('设备准备好，可以读写.',$show_last_log)    
     log('1. 准备读取串口',$show_last_log)
     try {
         log('2. 注册串口 ',$show_last_log)
+        setTimeout(function() {
+          if(!$serial_permission_responsed) {
+            serial.close();
+            $listen_to_serial_and_deal_with_buffers();
+          }
+        },8000)
         serial.requestPermission(
             function(successMessage) {
                 log('2.1 获得权限，准备打开: ' +  successMessage,$show_last_log)
+                $serial_permission_responsed = true;
                 serial.open({
                         baudRate: 38400,
                         dataBits: 8,
@@ -407,6 +415,7 @@ $listen_to_serial_and_deal_with_buffers = function() {
                                         $buffers_count += 1;
                                         $read_buffers_count += 1;
                                         log('成功读取到 ' + $read_buffers_count + ' 条',$show_last_log)
+                                        $('#signal').toggle()
                                         // if(success_callback != undefined) {
                                         //   success_callback();  
                                         // } 
@@ -423,10 +432,12 @@ $listen_to_serial_and_deal_with_buffers = function() {
                     },
                     function(e) {
                         $alert_and_retry_listen_to_serial_and_deal_with_buffers('打开串口失败：' + e)
+                        window.location.reload()
                     }
                 );
             },
             function(e) {
+                $serial_permission_responsed = false;
                 $alert_and_retry_listen_to_serial_and_deal_with_buffers('请求权限失败：' + e);
             }
         );
@@ -436,12 +447,15 @@ $listen_to_serial_and_deal_with_buffers = function() {
 }
 
 $alert_and_retry_listen_to_serial_and_deal_with_buffers = function(error) {
+  $serial_permission_responsed = false;
+  serial.close()
   log(error,$show_last_log)
   $.mobile.loading('show','a',error);
-  setTimeout(function() {
-    $.mobile.loading('hide');
-    $listen_to_serial_and_deal_with_buffers()
-  },3000)
+  // setTimeout(function() {
+  //   $.mobile.loading('hide');
+  //   $serial_permission_responsed = false;
+  //   $listen_to_serial_and_deal_with_buffers()
+  // },3000)
 }
 
 

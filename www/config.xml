@@ -72,5 +72,5 @@
     <!-- <feature name="Serial">
         <param name="android-package" value="org.stereolux.cordova.serial.Serial" />
     </feature> -->
-    <content src="debug.html" />
+    <!-- <content src="debug.html" /> -->
 </widget>

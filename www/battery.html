@@ -36,7 +36,7 @@
             <div class='nav_bar' data-theme="a" data-role="header">
                 <div class="ui-grid-b">
                     <div class="ui-block-a left_block">
-                      <a href="index.html" class='item home' rel='external'>
+                      <a id='go_to_home' href="index.html" class='item home' rel='external'>
                         首页
                       </a>
                       <a href="" class='item power'>
@@ -51,12 +51,15 @@
                     </div>
                     <div class="ui-block-b mid_block">
                         <div id='clock' class='clock'>
-                          <small>中午 11:12</small>
+                          <small></small>
+                          <b id='signal'>
+                              <img src="img/nav_bar/signal.png" width='8px' height='8px'>
+                          </b>
                         </div>
                     </div>
                     <div class="ui-block-c right_block">
                         <a href="debug.html" id='battery_power' class='battery_power' rel='external'>
-                          --%
+                          <b>--%</b>
                         </a>
                         <div class='weather'>
                             <content>
@@ -79,7 +82,7 @@
                 <div id='battery_info'>
                     <ul data-role="listview" data-inset="true">
                         <li data-role="list-divider" >状态</li>
-                        <li >
+                        <li id='status'>
                           正常主机模式 
                         </li>
                         <li data-role="list-divider">日志</li> 
@@ -89,45 +92,41 @@
                     <ul data-role="listview" data-inset="true">
                         <li >
                           总电量
-                          <span id='clLength' class='ui-li-value'>
-                            100000mAH
+                          <span id='total_p' class='ui-li-value'>                            
                           </span>  
                         </li> 
                         <li >
                           剩余电量
-                          <span id='clLength' class='ui-li-value'>
-                            96%
+                          <span id='total_pp' class='ui-li-value'>
                           </span> 
                         </li> 
                         <li >
                           总电压
-                          <span id='clLength' class='ui-li-value'>
-                            54000mV
+                          <span id='total_vf' class='ui-li-value'>
+                            
                           </span>
                         </li> 
                         <li >
                           总电流
-                          <span id='clLength' class='ui-li-value'>
-                            100000mA
+                          <span id='total_ec' class='ui-li-value'>                            
                           </span> 
                         </li>
                         <li >
-                          总电压
-                          <span id='clLength' class='ui-li-value '>
-                            54000mV
+                          板温度
+                          <span id='bcs_tmp' class='ui-li-value '>
                           </span> 
                         </li> 
                     </ul>
                     <ul data-role="listview" data-inset="true">
                         <li data-role="list-divider" class='err'>故障</li>
-                        <li>
-                            <b>电芯接头松</b>
-                            <p class="ui-li-aside"><strong>11日 15时13分</strong></p>
+                        <li id='bcs_error'>
+                            <b>&nbsp;</b>
+                            <p class="ui-li-aside"><strong></strong></p>
                         </li>
                         <li data-role="list-divider" class='err'>扩展故障</li>
-                        <li>
-                            <b>电芯接头松</b>
-                            <p class="ui-li-aside"><strong>11日 15时13分</strong></p>
+                        <li id='ext_bcs_error'>
+                            <b>&nbsp;</b>
+                            <p class="ui-li-aside"><strong></strong></p>
                         </li>
                     </ul>
                 </div>
@@ -146,7 +145,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -164,7 +163,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -182,7 +181,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -200,7 +199,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -218,7 +217,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -236,7 +235,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -254,7 +253,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -272,7 +271,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -290,7 +289,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -308,7 +307,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -326,7 +325,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -344,7 +343,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -362,7 +361,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -380,7 +379,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -398,7 +397,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -416,7 +415,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                电压：<span class='vf'>54000mv</span>
+                                电压：<span class='vf'></span>
                             </div>
                         </div>
                     </div>
@@ -436,7 +435,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                温度：<span class='tmp'>32.222°C</span>
+                                温度：<span class='tmp'></span>
                             </div>
                         </div>
                     </div>
@@ -454,7 +453,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                温度：<span class='tmp'>32.222°C</span>
+                                温度：<span class='tmp'></span>
                             </div>
                         </div>
                     </div>
@@ -472,7 +471,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                温度：<span class='tmp'>32.222°C</span>
+                                温度：<span class='tmp'></span>
                             </div>
                         </div>
                     </div>
@@ -490,7 +489,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                温度：<span class='tmp'>32.222°C</span>
+                                温度：<span class='tmp'></span>
                             </div>
                         </div>
                     </div>
@@ -508,7 +507,7 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                温度：<span class='tmp'>32.222°C</span>
+                                温度：<span class='tmp'></span>
                             </div>
                         </div>
                     </div>
@@ -526,17 +525,17 @@
                                 温度：<span class='tmp'>21</span>
                             </div> -->
                             <div class="ui-field-contain">
-                                温度：<span class='tmp'>32.222°C</span>
+                                温度：<span class='tmp'></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <script type="text/javascript">
-                // $(document).on('pageshow','#battery',function(){ 
-                //     log('init')
-                //     $show_the_last_log = true;
-                // })
+                $(document).on('pageshow','#battery',function(){ 
+                    log('pageshow')
+                    $show_clock()
+                })
 
                 // $(document).on('pagehide','#battery',function(){ 
                 //     $show_the_last_log = false;
@@ -548,10 +547,46 @@
                 // log('设备准备好，可以读写.')                
                 $listen_to_serial_and_deal_with_buffers();
             });    
-            $(document).everyTime('2s','about_batteries',function() {
+            $(document).everyTime('5s','about_batteries',function() {
+                log('显示时间')
+                $show_clock()
                 log('显示电量') 
+                // alert($bcs_status_c2v['00'])
                 $about_batterys(function(bcs) {
-                    $('#battery_power').html(bcs.total_pp + '%')
+                    $('#battery_power b').html(bcs.total_pp + '%')
+                    for(var i = 1; i <= 16; i++) {
+                        $('#cell' + i + ' .vf').html(bcs['cell' + i + '_vf'] + 'mv')
+                    }
+                    for(var i = 1; i <= 6; i++) {
+                        $('#temp' + i + ' .tmp').html(bcs['tmp' + i ] + '°C')
+                    }                    
+                    $('#total_vf').html(bcs.total_vf + 'mV');
+                    $('#total_ec').html(bcs.total_ec + 'mA');
+                    $('#total_pp').html(bcs.total_pp + '%');
+                    $('#total_p').html(bcs.total_p + 'mAH');
+                    $('#bcs_tmp').html(bcs.bcs_tmp + '°C');                    
+                    if(bcs.error_code != '') {
+                        if($bcs_error_c2v[bcs.error_code] != undefined) {                            
+                            $('#bcs_error b').html($bcs_error_c2v[bcs.error_code])
+                        } else {
+                            $('#bcs_error b').html( '未知故障代码：' + bcs.error_code);    
+                        }                        
+                        $('#bcs_error strong').html(bcs.created_at.getDate() + "日 " + bcs.created_at.getHours() + "时" + bcs.created_at.getMinutes() + "分");
+                    }else {
+                        $('#bcs_error b').html('&nbsp;')
+                    }
+
+                    if(bcs.ext_error_code != '') {
+                        if($bcs_error_c2v[bcs.error_code] != undefined) {
+                            $('#bcs_ext_error b').html($bcs_ext_error_c2v[bcs.ext_error_code] );
+                        } else {
+                            $('#bcs_ext_error b').html( '未知故障代码：' + bcs.ext_error_code);
+                        }                        
+                        $('#bcs_ext_error strong').html(bcs.created_at.getDate() + "日 " + bcs.created_at.getHours() + "时" + bcs.created_at.getMinutes() + "分");
+                    } else {
+                        $('#bcs_ext_error b').html('&nbsp;')
+                    }
+                    $('#status').html($bcs_status_c2v[bcs.status_code])
                 })
             })
         </script>

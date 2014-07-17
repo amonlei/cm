@@ -49,12 +49,15 @@
                     </div>
                     <div class="ui-block-b mid_block">
                         <div id='clock' class='clock'>
-                          <small>中午 11:12</small>
+                          <small></small>
+                          <b id='signal'>
+                              <img src="img/nav_bar/signal.png" width='8px' height='8px'>
+                          </b>
                         </div>
                     </div>
                     <div class="ui-block-c right_block">
                         <a href="battery.html" rel='external' id='battery_power' class='battery_power'>
-                          <b>--%</b><small></small>
+                          <b>--%</b>
                         </a>
                         <div class='weather'>
                           <content>
@@ -89,7 +92,7 @@
                       <img src="img/ad/home/3.jpg" id='adv_img_4'>
                     </div>
                     <div class="swiper-slide pink-slide">
-                      <img src="img/ad/home/4.jpg" id='adv_img_5'>
+                      <img src="img/ad/home/4.jpg" id='adv_img_5'>&nbsp;
                     </div>
                   </div>
                   <div class="pagination"></div>
@@ -129,10 +132,12 @@
             });  
 
             $(document).everyTime('5s','about_batteries',function() {
+                log('显示时间')
+                $show_clock()
                 log('显示电量') 
                 $about_batterys(function(bcs) {
                     $('#battery_power').html(bcs.total_pp + '%')
-                })
+                })                
             })
         </script>
     </body>
