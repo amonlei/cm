@@ -574,6 +574,7 @@
                         $('#bcs_error strong').html(bcs.created_at.getDate() + "日 " + bcs.created_at.getHours() + "时" + bcs.created_at.getMinutes() + "分");
                     }else {
                         $('#bcs_error b').html('&nbsp;')
+                        $('#bcs_error strong').html('&nbsp;')
                     }
 
                     if(bcs.ext_error_code != '') {
@@ -585,6 +586,7 @@
                         $('#bcs_ext_error strong').html(bcs.created_at.getDate() + "日 " + bcs.created_at.getHours() + "时" + bcs.created_at.getMinutes() + "分");
                     } else {
                         $('#bcs_ext_error b').html('&nbsp;')
+                        $('#bcs_ext_error strong').html('&nbsp;')
                     }
                     $('#status').html($bcs_status_c2v[bcs.status_code])
                 })
