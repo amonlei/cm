@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"batt",
+				"battery_power_icon"
+			],
+			[
+				"batter",
+				"battery_power"
+			],
+			[
+				"cell",
+				"cell11"
+			],
+			[
+				"try",
+				"try_to_listen_to_serial_and_deal_with_buffers"
+			],
+			[
+				"success",
+				"success_callback"
+			],
+			[
+				"bat",
+				"battery_power"
+			],
+			[
 				"user_",
 				"user_0"
 			],
@@ -490,48 +514,56 @@
 			[
 				"materi",
 				"Material"
-			],
-			[
-				"mus",
-				"must_be_inputed_in"
-			],
-			[
-				"mu",
-				"must_be_inputed_on"
-			],
-			[
-				"re",
-				"requirement"
-			],
-			[
-				"rees",
-				"resources"
-			],
-			[
-				"toda",
-				"to_date"
-			],
-			[
-				"mon",
-				"Month"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "platforms/android/AndroidManifest.xml",
-			"settings":
-			{
-				"buffer_size": 1210,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "www/index.html",
 			"settings":
 			{
-				"buffer_size": 29976,
+				"buffer_size": 6496,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/css/batteries.css",
+			"settings":
+			{
+				"buffer_size": 1368,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/css/nav_bar.css",
+			"settings":
+			{
+				"buffer_size": 2545,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/css/weather.css",
+			"settings":
+			{
+				"buffer_size": 463,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/battery.html",
+			"settings":
+			{
+				"buffer_size": 29131,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "www/js/app.js",
+			"settings":
+			{
+				"buffer_size": 16740,
 				"line_ending": "Windows"
 			}
 		}
@@ -571,6 +603,43 @@
 	},
 	"file_history":
 	[
+		"/D/projects/camy/win.sublime-project",
+		"/D/projects/camy/www/js/battery.js",
+		"/D/projects/camy/www/battery.html",
+		"/D/projects/camy/www/css/main.css",
+		"/D/projects/camy/www/css/nav_bar.css",
+		"/D/projects/camy/www/js/app.js",
+		"/D/projects/camy/www/js/bcs.js",
+		"/D/projects/camy/www/config.xml",
+		"/D/projects/camy/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebView.java",
+		"/D/projects/camy/plugins/org.stereolux.cordova.serial/www/serial.js",
+		"/D/projects/camy/platforms/android/cordova/lib/start-emulator",
+		"/D/projects/camy/www/spec.html",
+		"/D/projects/camy/www/css/images/icons-svg/navigation-black.svg",
+		"/D/projects/camy/www/css/images/icons-svg/navigation-white.svg",
+		"/D/projects/camy/platforms/android/assets/www/css/nav_bar.css",
+		"/D/projects/camy/docs/jquery_mobile_plugins/Swiper-master/demo-apps/movies/css/movies-app.css",
+		"/D/projects/camy/mac.sublime-project",
+		"/D/projects/camy/platforms/android/CordovaLib/src/org/apache/cordova/CordovaPlugin.java",
+		"/D/projects/camy/.cordova/config.json",
+		"/D/projects/camy/www/debug.html",
+		"/D/projects/camy/www/css/images/icons-svg/shop-white.svg",
+		"/D/projects/camy/platforms/android/CordovaLib/src/org/apache/cordova/CordovaWebViewClient.java",
+		"/D/projects/camy/www/css/images/icons-svg/shop-black.svg",
+		"/D/projects/camy/platforms/android/cordova/node_modules/shelljs/shell.js",
+		"/D/projects/camy/www/css/batteries.css",
+		"/D/projects/camy/www/js/jquery.timers-1.2.js",
+		"/D/projects/camy/www/test.html",
+		"/D/projects/camy/www/ut.html",
+		"/D/projects/camy/www/js/ut.js",
+		"/D/projects/camy/platforms/android/ant-gen/com/camy/battery/BuildConfig.java",
+		"/D/projects/camy/platforms/android/assets/www/js/battery.js",
+		"/D/projects/camy/platforms/android/CordovaLib/src/org/apache/cordova/LinearLayoutSoftKeyboardDetect.java",
+		"/D/projects/camy/www/css/battery.css",
+		"/D/projects/camy/platforms/android/AndroidManifest.xml",
+		"/D/projects/camy/platforms/android/ant-build/HelloWorld.ap_.d",
+		"/D/projects/camy/www/css/app.css",
+		"/D/projects/camy/plugins/android.json",
 		"/D/projects/camy/www/index.html",
 		"/D/projects/camy/platforms/android/cordova/lib/install-device",
 		"/D/projects/ace_on_rails/Gemfile",
@@ -661,44 +730,7 @@
 		"/D/projects/todo/db/migrate/20130724024235_create_balance_types.rb",
 		"/D/projects/todo/config/routes.rb",
 		"/D/projects/todo/app/views/layouts/www.html.erb",
-		"/D/projects/todo/app/assets/stylesheets/application.css",
-		"/D/projects/todo/app/views/daily_balance_sheets/index.html.erb",
-		"/D/projects/todo/app/models/daily_balance_sheet.rb",
-		"/D/projects/todo/app/models/daily_balance_sheet_item.rb",
-		"/D/projects/todo/app/models/balance_type.rb",
-		"/D/projects/todo/app/controllers/daily_balance_sheets_controller.rb",
-		"/D/projects/todo/app/controllers/application_controller.rb",
-		"/D/projects/todo/app/models/user.rb",
-		"/D/projects/todo/app/assets/stylesheets/balance_types_index.css",
-		"/D/projects/todo/app/controllers/balance_types_controller.rb",
-		"/D/projects/todo/app/models/group.rb",
-		"/D/projects/todo/db/migrate/20120326014701_create_letter_items.rb",
-		"/D/projects/todo/app/views/groups/new.html.erb",
-		"/D/projects/todo/app/views/balance_types/index.html.erb",
-		"/D/projects/todo/app/assets/stylesheets/www_index.css",
-		"/D/projects/todo/app/controllers/users_controller.rb",
-		"/D/projects/todo/app/views/balance_types/new.html.erb",
-		"/D/projects/todo/app/views/balance_types/_form.html.erb",
-		"/D/projects/todo/app/views/balance_types/edit.html.erb",
-		"/D/projects/todo/app/assets/stylesheets/balance_types_new_or_edit.css",
-		"/D/projects/todo/app/views/users/new.html.erb",
-		"/D/projects/todo/app/assets/stylesheets/users_new_or_edit.css",
-		"/D/projects/todo/app/models/letter.rb",
-		"/D/projects/todo/app/models/box.rb",
-		"/D/projects/todo/app/models/time_keeper.rb",
-		"/D/projects/todo/app/views/users/index.html.erb",
-		"/D/projects/todo/config/locales/zh-CN.yml",
-		"/D/projects/todo/app/assets/stylesheets/users_index.css",
-		"/D/projects/todo/app/views/mobile/daily_job_reports/_show_4_boss.html.erb",
-		"/D/projects/todo/app/views/mobile/daily_job_reports/show.html.erb",
-		"/D/projects/todo/app/views/mobile/daily_job_reports/_week_4_boss.html.erb",
-		"/D/projects/todo/app/models/daily_job_report.rb",
-		"/D/projects/todo/app/controllers/mobile/daily_job_reports_controller.rb",
-		"/D/projects/todo/app/views/mobile/daily_job_reports/_index_4_boss.html.erb",
-		"/D/projects/todo/app/views/mobile/daily_job_reports/_week_4_reporter.html.erb",
-		"/D/projects/todo/app/views/mobile/daily_job_reports/week.html.erb",
-		"/D/projects/todo/app/views/mobile/daily_job_reports/index.html.erb",
-		"/D/projects/todo/app/views/books/index.html.erb"
+		"/D/projects/todo/app/assets/stylesheets/application.css"
 	],
 	"find":
 	{
@@ -717,6 +749,69 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$buffers",
+			"#battery_power_icon",
+			"battery_power",
+			"power",
+			"clock",
+			"；",
+			"：",
+			"0x",
+			"：",
+			"；",
+			"ext_error_code",
+			"total_vf",
+			"54000mV",
+			"32.222°C",
+			".close()",
+			"alert_and_retry_listen_to_serial_and_deal_with_buffers",
+			"5px",
+			"battery_power",
+			"signal",
+			"$signal",
+			"准备",
+			"signal",
+			"准备",
+			"%",
+			"listen_to_serial_and_deal_with_buffers",
+			"%",
+			"battery",
+			"success_callback",
+			"listen_to_serial_and_deal_with_buffers",
+			"battery",
+			"clock",
+			"alert_and_retry_listen_to_serial_and_deal_with_buffers",
+			"listen_to_serial_and_deal_with_buffers",
+			"battery",
+			"battery_power",
+			"aaa",
+			"--",
+			"battery_power",
+			"$buffers",
+			"劫道",
+			"接到",
+			"$buffer96",
+			"40%",
+			"battery_power",
+			"battery",
+			"$buffer96",
+			"$buffers",
+			"$bcs",
+			"bcs",
+			"$show_clock",
+			"clock",
+			"show_last_log",
+			"$buffer",
+			"show_buffer",
+			"ad",
+			"adsf",
+			"log",
+			"the_last_log",
+			"listen_to_serial_and_deal_with_buffers",
+			"serial_init",
+			"$show_error",
+			"$show_log",
+			"serial_init",
 			"on",
 			"tap",
 			"RenderPriority",
@@ -781,70 +876,7 @@
 			"font-awesome",
 			"5",
 			"form-field-tags",
-			"/>\n",
-			"form-field-tags",
-			"tags",
-			"bootstrap-tag",
-			"extra",
-			"Error tip help! ",
-			"5",
-			"所有",
-			"bob",
-			"sortable",
-			"alert",
-			"bell",
-			"path",
-			"font-",
-			"font",
-			"ace_js",
-			"ace_css",
-			"bootstrap.min",
-			"/assets/css",
-			"/assets/",
-			"assets/",
-			"my_money",
-			"my_sheets",
-			"money",
-			"position",
-			"error",
-			"user",
-			"woincome",
-			"man",
-			"sex",
-			"address",
-			"地址",
-			"user",
-			"grid_19",
-			"grid_14",
-			"type_name_id",
-			"group",
-			"user",
-			"build",
-			"builder",
-			"@reports",
-			"group_name_reports",
-			"uncompleted_business_men_or_builders",
-			"business_mans_or_builders_count",
-			"_or_",
-			"office_manager",
-			"group_8",
-			"404",
-			"User.active_or_locked",
-			"User.active_or_locked.business_mans_or_builders_count",
-			"active_or_locked_users.business_mans_or_builders_count",
-			"User.active_or_locked",
-			"week_mobile_daily_job_reports_url",
-			"sms",
-			"baidu",
-			"email",
-			"电子邮箱",
-			"手机号",
-			"email_user",
-			"mobile",
-			"姓名",
-			"full_name",
-			"姓名",
-			"update_full_name"
+			"/>\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -852,6 +884,15 @@
 		"regex": false,
 		"replace_history":
 		[
+			"#battery_power",
+			"','",
+			"': '",
+			"",
+			"': '",
+			"','",
+			"",
+			"--%",
+			"log",
 			"#82AF6F",
 			"group_car_maintainer",
 			"group_servicer",
@@ -970,16 +1011,7 @@
 			"delivered",
 			"plan",
 			"Plan",
-			"grid_8",
-			"visible_nav_bar_item_to_current",
-			"responsible_for_current?",
-			"add_visible_",
-			"add_visible",
-			"grid_16",
-			"visible",
-			"visible_users",
-			"visible_groups",
-			"business"
+			"grid_8"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -990,64 +1022,204 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "platforms/android/AndroidManifest.xml",
+					"file": "www/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1210,
+						"buffer_size": 6496,
+						"regions":
+						{
+							"bookmarks":
+							{
+								"flags": 144,
+								"icon": "bookmark",
+								"regions":
+								[
+									[
+										5857,
+										5857
+									]
+								],
+								"scope": "bookmarks"
+							}
+						},
+						"selection":
+						[
+							[
+								5842,
+								5842
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1857.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "www/css/batteries.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1368,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1209,
-								1209
+								81,
+								81
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "www/index.html",
+					"buffer": 2,
+					"file": "www/css/nav_bar.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29976,
+						"buffer_size": 2545,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								29921,
-								29921
+								440,
+								440
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 171.0,
+						"translation.y": 114.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "www/css/weather.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								463,
+								463
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "www/battery.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								26662,
+								26662
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 10315.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "www/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16740,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13816,
+								13816
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6885.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1073,11 +1245,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1106,6 +1285,86 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"weather",
+				"www\\css\\weather.css"
+			],
+			[
+				"ap.js",
+				"www\\js\\app.js"
+			],
+			[
+				"navba",
+				"www\\css\\nav_bar.css"
+			],
+			[
+				"batcs",
+				"www\\css\\batteries.css"
+			],
+			[
+				"ap.",
+				"www\\js\\app.js"
+			],
+			[
+				"bcs",
+				"www\\js\\bcs.js"
+			],
+			[
+				"ser",
+				"plugins\\org.stereolux.cordova.serial\\www\\serial.js"
+			],
+			[
+				"nav",
+				"www\\css\\nav_bar.css"
+			],
+			[
+				"main.",
+				"www\\css\\main.css"
+			],
+			[
+				"con",
+				"www\\config.xml"
+			],
+			[
+				"battery",
+				"www\\js\\battery.js"
+			],
+			[
+				"debug",
+				"www\\debug.html"
+			],
+			[
+				"ba",
+				"www\\battery.html"
+			],
+			[
+				"time",
+				"www\\js\\jquery.timers-1.2.js"
+			],
+			[
+				"debug.htm",
+				"www\\debug.html"
+			],
+			[
+				"bcs.js",
+				"www\\js\\bcs.js"
+			],
+			[
+				"ut.js",
+				"www\\js\\ut.js"
+			],
+			[
+				"ut",
+				"www\\ut.html"
+			],
+			[
+				"batteries",
+				"www\\css\\batteries.css"
+			],
+			[
+				"debug.",
+				"www\\debug.html"
+			],
 			[
 				"index",
 				"www\\index.html"
@@ -1371,10 +1630,6 @@
 				"db\\migrate\\20130724024235_create_balance_types.rb"
 			],
 			[
-				"ba",
-				"app\\models\\balance_type.rb"
-			],
-			[
 				"cdbsi",
 				"db\\migrate\\20130726021043_create_daily_balance_sheet_items.rb"
 			],
@@ -1541,82 +1796,6 @@
 			[
 				"show4",
 				"app\\views\\mobile\\daily_job_reports\\_show_4_boss.html.erb"
-			],
-			[
-				"moindex",
-				"app\\views\\mobile\\daily_job_reports\\index.html.erb"
-			],
-			[
-				"_week4",
-				"app\\views\\mobile\\daily_job_reports\\_week_4_boss.html.erb"
-			],
-			[
-				"week.htm",
-				"app\\views\\mobile\\daily_job_reports\\week.html.erb"
-			],
-			[
-				"modaijob",
-				"app\\controllers\\mobile\\daily_job_reports_controller.rb"
-			],
-			[
-				"dailyjcon",
-				"app\\controllers\\daily_job_reports_controller.rb"
-			],
-			[
-				"mobileh",
-				"app\\views\\layouts\\mobile.html.erb"
-			],
-			[
-				"_in4rep",
-				"app\\views\\mobile\\daily_job_reports\\_index_4_reporter.html.erb"
-			],
-			[
-				"shboss",
-				"app\\views\\mobile\\daily_job_reports\\_show_4_boss.html.erb"
-			],
-			[
-				"ww.htm",
-				"app\\views\\layouts\\www.html.erb"
-			],
-			[
-				"mobile",
-				"app\\views\\layouts\\mobile.html.erb"
-			],
-			[
-				"passcon",
-				"app\\controllers\\passwords_controller.rb"
-			],
-			[
-				"passedi",
-				"app\\views\\passwords\\edit.html.erb"
-			],
-			[
-				"editp",
-				"app\\views\\mobile\\users\\edit_password.html.erb"
-			],
-			[
-				"usersedit",
-				"app\\views\\users\\edit.html.erb"
-			],
-			[
-				"mobilecss",
-				"app\\assets\\stylesheets\\mobile.css"
-			],
-			[
-				"rotues",
-				"config\\routes.rb"
-			],
-			[
-				"mobisessinew",
-				"app\\views\\mobile\\sessions\\new.html.erb"
-			],
-			[
-				"routes.r",
-				"config\\routes.rb"
-			],
-			[
-				"mobieuserscon",
-				"app\\controllers\\mobile\\users_controller.rb"
 			]
 		],
 		"width": 0.0

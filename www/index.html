@@ -134,8 +134,9 @@
             $(document).everyTime('5s','about_batteries',function() {
                 log('显示时间')
                 $show_clock()
-                log('显示电量') 
+                log('显示电量')                 
                 $about_batterys(function(bcs) {
+                    $battery_power_icon(parseInt(bcs.total_pp));
                     $('#battery_power').html(bcs.total_pp + '%')
                 })                
             })

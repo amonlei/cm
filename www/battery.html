@@ -551,9 +551,10 @@
                 log('显示时间')
                 $show_clock()
                 log('显示电量') 
-                // alert($bcs_status_c2v['00'])
+                // alert($bcs_status_c2v['00'])                
                 $about_batterys(function(bcs) {
                     $('#battery_power b').html(bcs.total_pp + '%')
+                    $battery_power_icon(parseInt(bcs.total_pp));
                     for(var i = 1; i <= 16; i++) {
                         $('#cell' + i + ' .vf').html(bcs['cell' + i + '_vf'] + 'mv')
                     }

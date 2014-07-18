@@ -399,7 +399,9 @@ $listen_to_serial_and_deal_with_buffers = function() {
                         serial.registerReadCallback(
                             function(buffer) {
                                 try {
-                                    $buffers(buffer,log,log,function(buffer) {
+                                    $buffers(buffer,log,function(error) {
+                                      log(error,$show_last_log)
+                                    },function(buffer) {
                                         if($buffers_count > 5) {
                                             $('#console').html('');
                                             log('清屏，再来！',$show_last_log)
@@ -485,5 +487,25 @@ $try = function(callback) {
     callback()
   } catch(e) {
     alert(e)    
+  }
+}
+
+$battery_power_icon = function(pp) {
+  $([0,20,40,60,80,100]).each(function(i,p) {
+    $('#battery_power').removeClass('power_p' + p)
+  })
+
+  if( pp == 0) {
+    $('#battery_power').addClass('power_p0');
+  } else if( pp > 0 && pp <= 20) {
+    $('#battery_power').addClass('power_p20');
+  } else if( pp > 20 && pp <= 40) {
+    $('#battery_power').addClass('power_p40');  
+  } else if( pp > 40 && pp <= 60) {
+    $('#battery_power').addClass('power_p60');
+  } else if( pp > 60 && pp <= 80) {
+    $('#battery_power').addClass('power_p80');
+  } else {
+    $('#battery_power').addClass('power_p100');
   }
 }
