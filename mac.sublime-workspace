@@ -520,10 +520,26 @@
 	"buffers":
 	[
 		{
-			"file": "www/index.html",
+			"file": "www/js/bcs.js",
 			"settings":
 			{
-				"buffer_size": 6415,
+				"buffer_size": 2587,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/js/ut.js",
+			"settings":
+			{
+				"buffer_size": 2625,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "www/config.xml",
+			"settings":
+			{
+				"buffer_size": 4958,
 				"line_ending": "Unix"
 			}
 		}
@@ -559,6 +575,8 @@
 	},
 	"file_history":
 	[
+		"/Users/amonlei/projects/camy/www/ut.html",
+		"/Users/amonlei/projects/camy/www/index.html",
 		"/Users/amonlei/projects/ace_on_rails/trunk/app/views/cars/index.html.erb",
 		"/Users/amonlei/projects/ace_on_rails/trunk/app/views/users/index.html.erb",
 		"/Users/amonlei/projects/ace_on_rails/trunk/app/views/courses/index.html.erb",
@@ -568,7 +586,6 @@
 		"/Users/amonlei/projects/camy/www/js/jquery.loadTemplate-1.4.4.min.js",
 		"/Users/amonlei/projects/camy/www/js/jquery.js",
 		"/Users/amonlei/projects/camy/www/js/app.js",
-		"/Users/amonlei/projects/camy/www/index.html",
 		"/Users/amonlei/projects/camy/plugins/android.json",
 		"/Users/amonlei/projects/camy/www/css/debug.css",
 		"/Users/amonlei/projects/camy/www/test.html",
@@ -685,8 +702,7 @@
 		"/D/projects/truck_app/www/css/jquery.mobile.icons.min.css",
 		"/D/projects/truck_app/www/js/jquery.storageapi.min.js",
 		"/D/projects/truck_app/mac.sublime-project",
-		"/D/projects/truck_app/docs/jquery.plugins/codepb-jquery-template/loadTemplate.jquery.json",
-		"/D/projects/truck_app/platforms/android/ant-build/TrunckOnline.ap_.d"
+		"/D/projects/truck_app/docs/jquery.plugins/codepb-jquery-template/loadTemplate.jquery.json"
 	],
 	"find":
 	{
@@ -709,6 +725,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"'01','23','01','2c'",
+			"'0c','e4'",
 			"$buffers",
 			"every",
 			"external",
@@ -834,9 +852,7 @@
 			"current_user",
 			"must_login",
 			"appendTo",
-			"load",
-			"clserv",
-			"md5uname"
+			"load"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -844,6 +860,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"'23','00','2c','00'",
+			"'23','01','2c','01'",
+			"'2c','01','23','01'",
+			"'e4','0c'",
 			"$tmp_buffer96",
 			"$",
 			"$tmp_buffer96_items_count",
@@ -967,11 +987,7 @@
 			"decimal",
 			"t.string :",
 			"decimal",
-			"t.string :",
-			"t.string ",
-			"odds",
-			"对阵,时间等信息",
-			""
+			"t.string :"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -987,29 +1003,95 @@
 			[
 				{
 					"buffer": 0,
-					"file": "www/index.html",
+					"file": "www/js/bcs.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6415,
+						"buffer_size": 2587,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								452,
+								452
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1033.0,
+						"translation.y": 457.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "www/js/ut.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2625,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								891,
+								891
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 408.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "www/config.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4958,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								63,
+								63
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1035,11 +1117,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -1060,7 +1149,7 @@
 	"project": "mac.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1068,6 +1157,18 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"con",
+				"www/config.xml"
+			],
+			[
+				"ut",
+				"www/js/ut.js"
+			],
+			[
+				"bcs",
+				"www/js/bcs.js"
+			],
 			[
 				"index",
 				"app/views/courses/index.html.erb"
@@ -1099,10 +1200,6 @@
 			[
 				"and",
 				"plugins/android.json"
-			],
-			[
-				"con",
-				"www/config.xml"
 			],
 			[
 				"debugcs",
@@ -1571,14 +1668,6 @@
 			[
 				"baskethelp",
 				"app\\helpers\\basketball_games_helper.rb"
-			],
-			[
-				"baskindec",
-				"app\\assets\\stylesheets\\basketball_games_index.css"
-			],
-			[
-				"gamesin",
-				"app\\assets\\stylesheets\\games_index.css"
 			]
 		],
 		"width": 0.0
